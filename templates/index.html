@@ -1,9 +1,8 @@
 {% extends 'base.html' %}
-
 {% load static %}
 
-{% block visitor_add %}
-<nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
+{% block home %}
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
     <div class="container">
       <a href='{% url "home" %}' class="navbar-brand"><b>Visitor Management Software</b></a>
       <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
@@ -11,10 +10,10 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item ">
+          <li class="nav-item active">
             <a href='{% url "home" %}' class="nav-link">Home</a>
           </li>
-          <li class="nav-item active">
+          <li class="nav-item">
             <a href='/add_visitor/visitor/' class="nav-link">Add Visitor</a>
           </li>
          
@@ -22,13 +21,5 @@
       </div>
     </div>
   </nav>
-  <br><br>
-<form method="POST" action="">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <input type="submit" value="save">
-</form>
-<script type="text/javascript" src="{% static 'admin/js/vendor/jquery/jquery.js' %}"></script>
 
-{{ form.media }}
-{% endblock %}
+{% endblock %}  

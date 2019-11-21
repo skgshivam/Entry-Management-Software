@@ -9,7 +9,7 @@ def add_visitor(request):
             visitor_item=form.save(commit=False)
             visitor_item.save()
             print(visitor_item)
-            #return redirect('/profile/show_profile/'+str(profile_item.doctor_id))
+            return redirect('/profile/show_profile/'+str(profile_item.doctor_id))
     else:
         form=Add_Visitor(request.POST or None, request.FILES or None)
     return render(request,'new_file.html',{'form':form})
