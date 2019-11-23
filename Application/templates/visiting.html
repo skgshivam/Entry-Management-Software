@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block visiting %}
+
+
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a href='{% url "home" %}' class="navbar-brand"><b>Visitor Management Software</b></a>
+      <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item ">
+            <a href='{% url "home" %}' class="nav-link">Home</a>
+          </li>
+          <li class="nav-item active">
+            <a href="{% url 'Application:end_visit' visitor.id %}" class="nav-link">Checkout</a>
+          </li>
+         
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <br><br><br><br>
+
+    <div class="col-sm-8 col-md-9" style="padding-left:400px">
+    
+
+    
+        <div class="card" style="width:80%">
+        <h5 class="card-header">{{visitor.name}}</h5>
+        <div class="card-body">
+            <h5 class="card-title">Mobile No : {{visitor.phone}}</h5>
+            <h5 class="card-title">Email : {{visitor.email_address}}</h5>
+            <h5 class="card-title">Checkin Time : {{visitor.check_in_time}}</h5>
+            <h5 class="card-title" >Host Name : {{host.name}}</h5>
+
+            
+            {% comment %} <p class="card-text">It's a broader card with text below as a natural lead-in to extra content. This content is a little longer.</p> {% endcomment %}
+            {% comment %} <a href="{% url 'Application:end_visit' visitor.id %}" class="btn btn-primary">Checkout</a> {% endcomment %}
+            <a href="{% url 'Application:end_visit' visitor.id %}" class="btn btn-info btn-block my-4" type="submit">Checkout</a>
+        </div>
+        </div>
+
+
+    
+    </div>
+{% endblock %}    

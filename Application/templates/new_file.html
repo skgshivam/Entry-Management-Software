@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% load static %}
+{% load crispy_forms_tags %}
 
 {% block visitor_add %}
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
@@ -22,13 +23,53 @@
       </div>
     </div>
   </nav>
-  <br><br>
-<form method="POST" action="">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <input type="submit" value="save">
-</form>
+  <br><br><br><br>
+<center>  
+<div class="card border mb-3" style="width:52.9%; text-align:left">
+
+  <h5 class="card-header info-color white-text text-center py-4 ">
+    <strong>New Visitor</strong>
+  </h5>
+
+  <!--Card content-->
+  <div class="card-body px-lg-5 pt-0">
+{% if error_message %}
+  <p><strong>{{error_message}}</strong></p>
+{% endif %}
+
+        <form method="POST" action="">
+        <br>
+          {% csrf_token %}
+          <div class="row">
+              <div class="col-6">
+                {{ form.name|as_crispy_field }}
+              </div>
+              <div class="col-6">
+                {{ form.email_address|as_crispy_field }}
+              </div>
+          </div>
+          {{ form.phone|as_crispy_field }}
+          Host* &nbsp;&nbsp;<br>
+          {{ form.host}}
+          &nbsp;&nbsp;&nbsp;&nbsp;<span style="position: relative;
+    padding: .25rem 2.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+    color: #0c5460;
+    background-color: #d1ecf1;
+    border-color: #bee5eb;"> Current Time will be logged </span>
+          {% comment %} <div class="text-center py-4 mt-3"> {% endcomment %}
+          <button class="btn btn-info btn-block my-4" type="submit">Check In</button>
+ 
+        {% comment %} <button class="btn btn-cyan" type="submit" value="submit" style="width:200px">Submit</button> {% endcomment %}
+      </div>
+        </form>
+  </div>
+</div>        
+</center>
 <script type="text/javascript" src="{% static 'admin/js/vendor/jquery/jquery.js' %}"></script>
+
 
 {{ form.media }}
 {% endblock %}

@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'Application',
     'dal',
     'dal_select2',
+    'crispy_forms', 
 ]
 
 MIDDLEWARE = [
@@ -53,6 +54,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'EMS.urls'
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 TEMPLATES = [
     {

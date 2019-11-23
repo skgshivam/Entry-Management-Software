@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block checkout %}
+
+
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a href='{% url "home" %}' class="navbar-brand"><b>Visitor Management Software</b></a>
+      <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item ">
+            <a href='{% url "home" %}' class="nav-link">Home</a>
+          </li>
+          <li class="nav-item">
+            <a href='/add_visitor/visitor/' class="nav-link">Add Visitor</a>
+          </li>
+         
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <br><br><br><br>
+  <br><br><br><br>
+
+    <div class="col-sm-8 col-md-9" style="padding-left:450px">
+    
+
+    
+        <div class="card" style="width:80%">
+        <h5 class="card-header">SUCCESSFULLY CHECKOUT-OUT</h5>
+        <div class="card-body">
+            <h5 class="card-title">Redirecting To Home Page .... </h5>
+         
+           
+        </div>
+        </div>
+
+
+    
+    </div>
+<script>
+    function redirect(){
+       window.location.href = "/";
+    }
+
+    setTimeout(redirect, 3000); 
+</script>
+
+  {% endblock %}    

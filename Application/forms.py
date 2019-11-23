@@ -7,7 +7,8 @@ class Add_Visitor(forms.ModelForm):
                 queryset=Host.objects.all(),
                 widget=autocomplete.ModelSelect2(url='Application:name-autocomplete',
                 attrs={
-                'data-placeholder': 'Visitor-name',
+                'data-placeholder': 'Host Name',
+                
                 #'data-minimum-input-length': 1,
                 })
             )
@@ -15,17 +16,20 @@ class Add_Visitor(forms.ModelForm):
         model=Visitor
         exclude=['check_out_time']
 
-class ItemForm(forms.ModelForm):
-    visitor_name = forms.ModelChoiceField(
-                queryset=Host.objects.all(),
-                widget=autocomplete.ModelSelect2(url='Application:name-autocomplete',
-                attrs={
-                'data-placeholder': 'Visitor-name',
-                #'data-minimum-input-length': 1,
-                })
-            )
-    class Meta:
-        model = Visitor
-        fields = '__all__'
+    def clean(self): 
+  
+        super(Add_Visitor, self).clean() 
+          
+        mobile_no = self.cleaned_data.get('phone') 
+        # text = self.cleaned_data.get('text') 
+  
+        if len(str(mobile_no)) != 10: 
+            self._errors['phone'] = self.error_class([ 
+                'Mobile No Length must be 10']) 
+          
+        # return any errors if found 
+        return self.cleaned_data         
+
+
 
 
